@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_design/domain/Constants/appcolors.dart';
 import 'package:food_design/domain/Utility.dart';
+import 'package:food_design/repository/screens/otp/OtpScreen.dart';
 
-void main(){
-  runApp(Forgotpass());
-}
 
 class Forgotpass extends StatefulWidget {
   const Forgotpass({super.key});
@@ -21,8 +19,7 @@ class _ForgotpassState extends State<Forgotpass> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.black,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,6 +104,10 @@ class _ForgotpassState extends State<Forgotpass> {
 
                           if(result){
                             Fluttertoast.showToast(msg: "Send code successfully");
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return OtpScreen(_emailcontroller.text.toString());
+                            }));
                           }
 
                         },
@@ -127,7 +128,6 @@ class _ForgotpassState extends State<Forgotpass> {
 
           ],
         ),
-      ),
     );
   }
 

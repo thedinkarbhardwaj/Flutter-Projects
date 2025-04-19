@@ -1,7 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_design/domain/Constants/appcolors.dart';
 import 'package:food_design/repository/apiCall/ApiCall.dart';
 import 'package:food_design/repository/screens/forgotPass/ForgotPass.dart';
+import 'package:food_design/repository/screens/signup/SignupScreen.dart';
 import 'package:food_design/repository/screens/spalshscreen/SplashScreen.dart';
 import 'package:food_design/repository/widgets/constants/constants.dart';
 
@@ -202,7 +204,12 @@ class _LoginScreenState extends State<LoginScreen> {
                            children: [
 
                              TextSpan(text: "Don’t have an account?",style: TextStyle(color: Colors.black)),
-                             TextSpan(text: " Sign Up",style: TextStyle(color: AppColors.orange),)
+                             TextSpan(text: " Sign Up",style: TextStyle(color: AppColors.orange),
+                             recognizer: TapGestureRecognizer()..onTap =(){
+                               Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                 return Signupscreen();
+                               },));
+                             })
 
                            ]
                          )),
